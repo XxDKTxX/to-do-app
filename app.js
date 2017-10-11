@@ -36,7 +36,7 @@ function renderTheUI(toDos) {
     newLi.appendChild(checkbox);
     newLi.appendChild(remTask);
 
-    remTask.addEventListener("click", event => {
+   remTask.addEventListener("click", event => {
      toDoList.removeChild(newLi);
    });
 
