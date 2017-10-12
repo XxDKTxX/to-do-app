@@ -3,6 +3,9 @@
    const addToDoForm = document.getElementById('addToDoForm');
    const newToDoText = document.getElementById('newToDoText');
    const toDoList = document.getElementById('toDoList');
+   const deleteBtn = document.getElementById('delete');
+   const items = toDoList.getElementsByTagName('li');
+
 
    addToDoForm.addEventListener('submit', () => {
 event.preventDefault();
@@ -28,9 +31,13 @@ event.preventDefault();
     //empty the input
     newToDoText.value = '';
 
-    let deleteTask = document.createElement('input')
-
-    deleteTask.type = "button";
+    DELETE_BTN.addEventListener('click', event =>{
+     for(let i=0; i<ITEMS.length; i++){
+       let cb = ITEMS[i].getElementsByTagName('input');
+       if(cb.checked){
+           ITEMS[i].remove();
+      }
+     }
 
   });
  }
