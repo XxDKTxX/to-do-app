@@ -1,48 +1,51 @@
+function onReady(){
+  const ADD_TO_DO_FORM = document.getElementById('addToDoForm');
+  const NEW_TO_DO_TEXT = document.getElementById('newToDoText');
+  const TO_DO_LIST = document.getElementById('toDoList');
+  const DELETE_BTN = document.getElementById('delete');
+  const ITEMS = TO_DO_LIST.getElementsByTagName('li');
 
- function onReady() {
-   const addToDoForm = document.getElementById('addToDoForm');
-   const newToDoText = document.getElementById('newToDoText');
-   const toDoList = document.getElementById('toDoList');
-   const deleteBtn = document.getElementById('delete');
-   const items = toDoList.getElementsByTagName('li');
+  ADD_TO_DO_FORM.addEventListener('submit', event => {
+    event.preventDefault(); //stop page from reloading
 
-
-   addToDoForm.addEventListener('submit', () => {
-event.preventDefault();
-
-    // get the text
+    //get the text for the new to-do item
     let title = newToDoText.value;
 
-    // create a new li
+    //create new li
     let newLi = document.createElement('li');
 
-    // create a new input for the checkbox
+    //create new input
     let checkbox = document.createElement('input');
 
-    // set the input's type to checkbox
+    //set input's type to checkbox
     checkbox.type = "checkbox";
 
-    // set the title
+    //set the title (text of li to what user put in)
     newLi.textContent = title;
 
-    // attach the checkbox to the li
+    //attach the checkbox to the li
     newLi.appendChild(checkbox);
 
-    //empty the input
-    newToDoText.value = '';
+    //attach the li to the ul
+    TO_DO_LIST.appendChild(newLi);
 
-    DELETE_BTN.addEventListener('click', event =>{
-     for(let i=0; i<ITEMS.length; i++){
-       let cb = ITEMS[i].getElementsByTagName('input');
-       if(cb.checked){
-           ITEMS[i].remove();
-      }
-     }
+    //empty the input
+    NEW_TO_DO_TEXT.value = '';
 
   });
- }
 
- window.onload = function() {
-    alert("The window has loaded!");
-   onReady();
-  };
+  DELETE_BTN.addEventListener('click', event =>{
+    for(let i=0; i<ITEMS.length; i++){
+      let li = ITEMS[i].getElementsByTagName('input');
+      let cb = li[0]
+      if(cb.checked){
+        ITEMS[i].remove();
+      }
+    }
+  })
+}
+
+window.onload = function(){
+  alert("The window has loaded!");
+  onReady();
+};
