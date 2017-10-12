@@ -1,11 +1,11 @@
 function onReady(){
-  const ADD_TO_DO_FORM = document.getElementById('addToDoForm');
-  const NEW_TO_DO_TEXT = document.getElementById('newToDoText');
-  const TO_DO_LIST = document.getElementById('toDoList');
-  const DELETE_BTN = document.getElementById('delete');
-  const ITEMS = TO_DO_LIST.getElementsByTagName('li');
+  const addToDoForm = document.getElementById('addToDoForm');
+  const newToDoText = document.getElementById('newToDoText');
+  const toDoList = document.getElementById('toDoList');
+  const deleteBtn = document.getElementById('delete');
+  const items = toDoList.getElementsByTagName('li');
 
-  ADD_TO_DO_FORM.addEventListener('submit', event => {
+  addToDoForm.addEventListener('submit', event => {
     event.preventDefault(); //stop page from reloading
 
     //get the text for the new to-do item
@@ -27,10 +27,10 @@ function onReady(){
     newLi.appendChild(checkbox);
 
     //attach the li to the ul
-    TO_DO_LIST.appendChild(newLi);
+    toDoList.appendChild(newLi);
 
     //empty the input
-    NEW_TO_DO_TEXT.value = '';
+   newToDoText.value = '';
 
   });
 
